@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones</title>
+</head>
+<body>
+    <div>
+    <center>
+        <h1>Calificaciones por materia</h1>
+    </center>
+    </div>
+    <form name="APUSQUISQUI" method="POST" action="">
+    <i>Los campos con asteriscos(*) son obligatorios.</i>
+    <p></p>
+    <p></p>Ingresa el nombre del estudiante: 
+    <input type="text" name="nombre" id="nombre" value=""><br><br>
+    Ingresa los apellidos: 
+    <input type="text" name="apellido" id="apellido" value=""><br><br>
+    Ingresa el nombre del docente: 
+    <input type="text" name="docente" id="docente" value=""><br><br>
+    
+    Calificación del primer parcial: 
+    <select name="primer_parcial" id="primer_parcial">
+        <option value=""></option>
+
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br><br>
+  
+    Calificación del segundo parcial: 
+    <select name="segundo_parcial" id="segundo_parcial">
+        <option value=""></option>
+
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br><br>
+  
+    Calificación del tercer parcial: 
+    <select name="tercer_parcial" id="tercer_parcial">
+        <option value=""></option>
+
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br><br>
+ 
+    <button type="button" onclick="mostrarAlerta()">Calificar</button>
+    <button type="reset">Vaciar</button>
+    <br><br><br><br>
+  </form>
+
+  <i>Vista local de la bdd</i>
+  <table id="tablaCalificaciones" border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Docente</th>
+            <th>Primer Parcial</th>
+            <th>Segundo Parcial</th>
+            <th>Tercer Parcial</th>
+            <th>Promedio</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+  </table>
+
+  <script>
+    function mostrarAlerta() {
+      var nombre = document.getElementById("nombre").value;
+      var apellidos = document.getElementById("apellido").value;
+      var docente = document.getElementById("docente").value;
+      var primer_parcial = parseInt(document.getElementById("primer_parcial").value);
+      var segundo_parcial = parseInt(document.getElementById("segundo_parcial").value);
+      var tercer_parcial = parseInt(document.getElementById("tercer_parcial").value);
+      
+      if (nombre === "" || apellidos === "" || docente === "" || isNaN(primer_parcial) || isNaN(segundo_parcial) || isNaN(tercer_parcial)) {
+        alert("Por favor, complete todos los campos obligatorios y seleccione las calificaciones.");
+      } else {
+        var promedio = (primer_parcial + segundo_parcial + tercer_parcial) / 3;
+        var tablaBody = document.getElementById("tablaCalificaciones").getElementsByTagName("tbody")[0];
+        var newRow = tablaBody.insertRow(tablaBody.rows.length);
+        var celda1 = newRow.insertCell(0);
+        var celda2 = newRow.insertCell(1);
+        var celda3 = newRow.insertCell(2);
+        var celda4 = newRow.insertCell(3);
+        var celda5 = newRow.insertCell(4);
+        var celda6 = newRow.insertCell(5);
+        var celda7 = newRow.insertCell(6);
+        
+        celda1.innerHTML = nombre;
+        celda2.innerHTML = apellidos;
+        celda3.innerHTML = docente;
+        celda4.innerHTML = primer_parcial;
+        celda5.innerHTML = segundo_parcial;
+        celda6.innerHTML = tercer_parcial;
+        celda7.innerHTML = promedio;
+      }
+    }
+  </script>
+  
+</body>
+</html>
+<?php
+    // Conexin a la base de datos
+    $servidor = "74.208.62.188";
+    $usuario = "emiliano";
+    $clave = "xxxxxxxxx ";
+    $bd = "Calificaiones";
+
+    $conexion = mysqli_connect($servidor, $usuario, $clave, $bd);
+
+    // chequeo  de  conexin
+    if (!$conexion) {
+        die("La conexin ha fallado: " . mysqli_connect_error());
+    }
+
+    if(isset($_POST['enviar'])){
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $docente = $_POST['docente'];
+        $primer_parcial = $_POST['primer_parcial'];
+        $segundo_parcial = $_POST['segundo_parcial'];   
+        $tercer_parcial = $_POST['tercer_parcial'];
+        
+        
+        $promedio = ($primer_parcial + $segundo_parcial + $tercer_parcial) / 3;
+
+
+        $insertar = "INSERT INTO calificaciones (nombre, apellido, docente, primer_parcial, segundo_parcial, tercer_parcial, promedio) VALUES ('$nombre', '$apellido', '$docente', '$primer_parcial', '$segundo_parcial', '$tercer_parcial', '$promedio')";
+
+        if (mysqli_query($conexion, $insertar)) {
+            echo "Los datos se han insertado correctamente.";
+        } else {
+            echo "Error al insertar los datos: " . mysqli_error($conexion);
+        }
+    }
+?>
