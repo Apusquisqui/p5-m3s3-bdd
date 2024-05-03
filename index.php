@@ -11,7 +11,7 @@
 				<h1>Calificaciones por materia</h1>
 			</center>
 		</div>
-		<form name="APUSQUISQUI" method="POST" action="php pruba p5.php">
+		<form name="APUSQUISQUI" method="POST" action="Registro.php">
 			<i>Los campos con asteriscos(*) son obligatorios.</i>
 			<p></p>
 			<p></p>
