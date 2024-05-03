@@ -5,7 +5,7 @@ $usuario = "emiliano";
 $clave = "Apusquisqui23!! ";
 $bd = "calificaciones";
 
-$conexion = mysqli_connect($servidor, $usuario, $clave, $bd, 3306);
+$conexion = mysqli_connect("localhost", $usuario, $clave, $bd, 3306);
 
 // chequor  de  conexin
 if (!$conexion) {
