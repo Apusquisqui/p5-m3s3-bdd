@@ -60,7 +60,7 @@
 			<option value="10">10</option>
 		</select><br /><br />
 
-		<input type="button" value="Calificar">
+		<input type="button" value="Calificar" onclick="javascript:mostrarAlerta();">
 		<button type="reset">Vaciar</button>
 		<input type="submit" value="Enviar">
 		<br /><br /><br /><br />
