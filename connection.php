@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-$servidor = "74.208.62.188";
+$servidor = "emiliano.castelancarpinteyro.com";
 $usuario = "emiliano";
 $clave = "Apusquisqui23!! ";
 $bd = "calificaciones";
