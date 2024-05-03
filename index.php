@@ -16,14 +16,14 @@
 			<p></p>
 			<p></p>
 			Ingresa el nombre del estudiante:
-			<input type="text" name="nombre" id="nombre" value="" /><br /><br />
+			<input type="text" name="nombre" id="nombre" value="" required/><br /><br />
 			Ingresa los apellidos:
-			<input type="text" name="apellido" id="apellido" value="" /><br /><br />
+			<input type="text" name="apellido" id="apellido" value="" required/><br /><br />
 			Ingresa el nombre del docente:
-			<input type="text" name="docente" id="docente" value="" /><br /><br />
+			<input type="text" name="docente" id="docente" value="" required/><br /><br />
 
 			Calificación del primer parcial:
-			<select name="primer_parcial" id="primer_parcial">
+			<select name="primer_parcial" id="primer_parcial" required>
 				<option value=""></option>
 
 				<option value="5">5</option>
@@ -35,7 +35,7 @@
 			><br /><br />
 
 			Calificación del segundo parcial:
-			<select name="segundo_parcial" id="segundo_parcial">
+			<select name="segundo_parcial" id="segundo_parcial" required>
 				<option value=""></option>
 
 				<option value="5">5</option>
@@ -47,7 +47,7 @@
 			><br /><br />
 
 			Calificación del tercer parcial:
-			<select name="tercer_parcial" id="tercer_parcial">
+			<select name="tercer_parcial" id="tercer_parcial" required>
 				<option value=""></option>
 
 				<option value="5">5</option>
