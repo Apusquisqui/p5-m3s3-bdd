@@ -58,8 +58,9 @@
 				<option value="10">10</option></select
 			><br /><br />
 
-			<button type="button" onclick="mostrarAlerta()">Calificar</button>
-			<button type="reset">Vaciar</button>
+			  <input type="submit" value="Calificar"> 
+    <button type="reset">Vaciar</button>
+    <input type="submit" value="Enviar">
 			<br /><br /><br /><br />
 		</form>
 
