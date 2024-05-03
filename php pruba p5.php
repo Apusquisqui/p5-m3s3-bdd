@@ -1,16 +1,4 @@
 <?php
-    // Conexin a la base de datos
-    $servidor = "74.208.62.188";
-    $usuario = "emiliano";
-    $clave = "xxxxxxxxx ";
-    $bd = "Calificaiones";
-
-    $conexion = mysqli_connect($servidor, $usuario, $clave, $bd);
-
-    // chequor  de  conexin
-    if (!$conexion) {
-        die("La conexión ha fallado: " . mysqli_connect_error());
-    }
 
     if(isset($_POST['enviar'])){
         $nombre = $_POST['nombre'];
